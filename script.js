@@ -1,4 +1,5 @@
 gsap.registerPlugin(MorphSVGPlugin);
+
 const { gsap: { to, timeline, set, delayedCall }, Splitting } = window;
 Splitting();
 
@@ -156,7 +157,6 @@ const MASTER_TL = timeline({
   .add(FLAME_TL(), 'FLAME_ON')
   .add(LIGHTS_OUT(), 'LIGHTS_OUT');
 
-// Audio event fix to continue timeline when muted
 MASTER_TL.add(() => {
   SOUNDS.MATCH.play();
 }, 'FLAME_ON');
@@ -164,10 +164,6 @@ MASTER_TL.add(() => {
 MASTER_TL.add(() => {
   SOUNDS.TUNE.play();
 }, 'LIGHTS_OUT');
-
-
-
-SOUNDS.TUNE.onended = SOUNDS.MATCH.onended = () => MASTER_TL.play();
 
 BTN.addEventListener('click', () => {
   BTN.setAttribute('disabled', true);
