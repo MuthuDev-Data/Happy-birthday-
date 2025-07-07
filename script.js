@@ -1,10 +1,9 @@
+gsap.registerPlugin(MorphSVGPlugin);
 const {
   gsap,
   gsap: { to, timeline, set, delayedCall },
   Splitting } =
 window;
-
-gsap.registerPlugin(MorphSVGPlugin);
 Splitting();
 
 const BTN = document.querySelector('.birthday-button__button');
