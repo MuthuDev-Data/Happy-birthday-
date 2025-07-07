@@ -1,5 +1,4 @@
 gsap.registerPlugin(MorphSVGPlugin);
-
 const { gsap: { to, timeline, set, delayedCall }, Splitting } = window;
 Splitting();
 
