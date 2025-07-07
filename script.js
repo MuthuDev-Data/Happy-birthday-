@@ -157,15 +157,14 @@ const MASTER_TL = timeline({
   .add(LIGHTS_OUT(), 'LIGHTS_OUT');
 
 // Audio event fix to continue timeline when muted
-MASTER_TL.addPause('FLAME_ON', () => {
+MASTER_TL.add(() => {
   SOUNDS.MATCH.play();
-  delayedCall(0.1, () => MASTER_TL.play());
-});
+}, 'FLAME_ON');
 
-MASTER_TL.addPause('LIGHTS_OUT', () => {
+MASTER_TL.add(() => {
   SOUNDS.TUNE.play();
-  delayedCall(0.1, () => MASTER_TL.play());
-});
+}, 'LIGHTS_OUT');
+
 
 
 SOUNDS.TUNE.onended = SOUNDS.MATCH.onended = () => MASTER_TL.play();
