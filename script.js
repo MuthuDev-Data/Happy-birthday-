@@ -158,20 +158,15 @@ const MASTER_TL = timeline({
 
 // Audio event fix to continue timeline when muted
 MASTER_TL.addPause('FLAME_ON', () => {
-  if (!SOUNDS.MATCH.muted) {
-    SOUNDS.MATCH.play();
-  } else {
-    MASTER_TL.play();
-  }
+  SOUNDS.MATCH.play();
+  delayedCall(0.1, () => MASTER_TL.play());
 });
 
 MASTER_TL.addPause('LIGHTS_OUT', () => {
-  if (!SOUNDS.TUNE.muted) {
-    SOUNDS.TUNE.play();
-  } else {
-    MASTER_TL.play();
-  }
+  SOUNDS.TUNE.play();
+  delayedCall(0.1, () => MASTER_TL.play());
 });
+
 
 SOUNDS.TUNE.onended = SOUNDS.MATCH.onended = () => MASTER_TL.play();
 
